@@ -11,7 +11,6 @@ int	mv_to_dir(int ac, char *av[])
 		return (printf("%s: failed to fetch directory's metadata\n", av[0]), 0);
 	for (int i = 1; i < ac - 1; i++)
 	{
-		fd_to_move = open(av[i], O_RDONLY);
 		if (linkat(AT_FDCWD, av[i], srcdir_fd, av[i], 0) < 0)
 			return (printf("%s: rename %s to %s/%s: No such file or directory",
 					av[0], av[i], av[ac - 1], av[i]), 0);
